@@ -15,7 +15,6 @@ const variants = {
   initial: { opacity: 0, y: 20 },
   animate: { opacity: 1, y: 0 },
   exit: { opacity: 0},
-  // exit: { opacity: 0, scale: 0 }
 }
 
 export default function Hero(props: HeroProps) {
@@ -40,7 +39,6 @@ export default function Hero(props: HeroProps) {
           className="text-white text-6xl"
           initial={variants.initial}
           animate={ stage === 'leaving' ? variants.exit : variants.animate}
-          // animate={stage === 'leaving' ? variants.leaving : variants.entering}
           transition={{ duration: 0.5 }}
         >
           {title}

@@ -2,7 +2,7 @@
 
 import { AnimatePresence } from 'framer-motion'
 import { usePathname } from 'next/navigation'
-import { ReactNode, cloneElement, isValidElement } from 'react'
+import { ReactNode } from 'react'
 import { motion } from 'framer-motion';
 
 interface AnimatePresenceWrapperProps {
@@ -16,11 +16,7 @@ export default function AnimatePresenceWrapper({ children }: AnimatePresenceWrap
   
   return (
     <AnimatePresence mode="wait">
-      {/* {isValidElement(children) 
-        ? cloneElement(children, { key: pathname })
-        : <div key={pathname}>{children}</div>
-      } */}
-
+      
       <motion.div key={pathname}>{children}</motion.div>
     </AnimatePresence>
   )
