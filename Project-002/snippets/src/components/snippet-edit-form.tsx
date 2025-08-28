@@ -9,12 +9,20 @@ interface SnippetEditFormProps {
   snippet: Snippet;
 }
 
+// NOTE: Options on calling server actions.
+// (1) Create a form and bind the server action with parameters and form data
+// (2) Use startTransition from react
+
 export default function SnippetEditForm({ snippet }: SnippetEditFormProps) {
   const [code, setCode] = useState(snippet.code);
 
   const handleEditorChange = (value: string = "") => {
     setCode(value);
   };
+
+  const editSnippetAction = actions.editSnippet.bind(
+    null, snippet.id, code
+  );
 
   return (
     <div>
@@ -28,6 +36,9 @@ export default function SnippetEditForm({ snippet }: SnippetEditFormProps) {
         }}
         onChange={handleEditorChange}
       />
+      <form action={editSnippetAction}>
+        <button type="submit" className="p-2 border rounded">Save</button>
+      </form>
     </div>
   );
 }
