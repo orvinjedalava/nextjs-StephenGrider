@@ -4,12 +4,12 @@ import Transition from '@/components/transition';
 
 export default function Home() {
   return (
-    <Transition>
+    // <Transition>
       <Hero
         imgData={homeImg}
         imgAlt="Car factory"
         title="Professional Cloud Hosting"
       />
-    </Transition>
+    // </Transition>
   );
 }
