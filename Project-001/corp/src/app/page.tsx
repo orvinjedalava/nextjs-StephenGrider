@@ -8,6 +8,5 @@ export default function Home() {
         imgAlt="Car factory"
         title="Professional Cloud Hosting"
       />
-    
   );
 }
