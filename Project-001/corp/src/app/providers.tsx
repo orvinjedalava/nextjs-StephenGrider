@@ -3,8 +3,6 @@
 import { useRef } from 'react';
 import { TransitionRouter } from 'next-transition-router';
 import { animate } from 'framer-motion/dom';
-import Transition from '@/components/transition';
-
 
 export default function Providers({ children }: { children: React.ReactNode }) {
   const wrapperRef = useRef<HTMLDivElement>(null!);
@@ -27,11 +25,8 @@ export default function Providers({ children }: { children: React.ReactNode }) {
         );
       }}
     >
-      {/* Need to use Transition for root page enter and exit animation */}
       <div ref={wrapperRef}>
-          <Transition>
-            {children}
-          </Transition>
+        {children}
       </div>
     </TransitionRouter>
   );
