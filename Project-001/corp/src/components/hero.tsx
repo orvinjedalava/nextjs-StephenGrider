@@ -16,9 +16,6 @@ export default function Hero(props: HeroProps) {
     <div className="relative h-screen">
       <motion.div 
         className="absolute -z-10 inset-0"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.5 }}
       >
         <Image
           src={imgData}
@@ -33,7 +30,7 @@ export default function Hero(props: HeroProps) {
           className="text-white text-6xl"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2, duration: 0.5 }}
+          transition={{ delay: 0.5, duration: 0.5 }}
         >
           {title}
         </motion.h1>
