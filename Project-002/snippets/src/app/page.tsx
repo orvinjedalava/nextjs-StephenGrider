@@ -1,6 +1,9 @@
 import Link from 'next/link';
 import { db } from '@/db';
 
+// forces page re-rendering on each request. No caching
+export const dynamic = 'force-dynamic';
+
 export default async function Home() {
   const snippets = await db.snippet.findMany();
 
