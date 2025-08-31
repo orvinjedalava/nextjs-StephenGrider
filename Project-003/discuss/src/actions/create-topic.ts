@@ -37,6 +37,8 @@ export async function createTopic(
     description: formData.get('description')
   });
 
+  // await new Promise(resolve => setTimeout(resolve, 3500));
+
   if (!result.success) {
     return {
       errors: result.error.flatten().fieldErrors
@@ -83,4 +85,9 @@ export async function createTopic(
     redirect(paths.topicShow(topic.slug));
     // TODO: revalidate the homepage
   }
+
+  // Fallback return to satisfy all code paths
+  return {
+    errors: {}
+  };
 }
