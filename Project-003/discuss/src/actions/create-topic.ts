@@ -47,7 +47,6 @@ export async function createTopic(
 
   const session = await auth();
   if (!session || !session.user) {
-    console.log('no session');
     return {
       errors: {
         _form: ['You must be signed in to do this.'],
