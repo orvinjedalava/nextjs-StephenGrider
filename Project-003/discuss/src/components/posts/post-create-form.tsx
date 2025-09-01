@@ -1,4 +1,6 @@
-import { useActionState } from 'react';
+'use client';
+
+import { useActionState, startTransition } from 'react';
 import {
   Input,
   Button,
@@ -11,6 +13,18 @@ import * as actions from '@/actions';
 import FormButton from '@/components/common/form-button';
 
 export default function PostCreateForm() {
+  const [formState, action, isPending] = useActionState(actions.createPost, {
+    errors: {}
+   });
+
+   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+       event.preventDefault();
+       const formData = new FormData(event.currentTarget);
+       startTransition(() => {
+         action(formData);
+       });
+     }
+
   return (
     <Popover placement="left">
       <PopoverTrigger>
@@ -19,7 +33,7 @@ export default function PostCreateForm() {
         </Button>
       </PopoverTrigger>
       <PopoverContent>
-        <form>
+        <form onSubmit={handleSubmit}>
           <div className="flex flex-col gap-4 p-4 w-80">
             <h3 className="text-lg>">Create a Post</h3>
 
@@ -28,15 +42,19 @@ export default function PostCreateForm() {
               label="Title"
               labelPlacement="outside"
               placeholder="Title"
+              isInvalid={!!formState.errors.title}
+              errorMessage={formState.errors.title?.join(', ')}
             />
             <Textarea
               name="content"
               label="Content"
               labelPlacement="outside"
-              placeholder="Content" 
+              placeholder="Content"
+              isInvalid={!!formState.errors.content}
+              errorMessage={formState.errors.content?.join(', ')}
             />
 
-            <FormButton>
+            <FormButton isLoading={isPending}>
               Create Post
             </FormButton>
           </div>
