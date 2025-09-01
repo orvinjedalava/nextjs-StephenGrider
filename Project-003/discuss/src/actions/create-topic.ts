@@ -72,7 +72,7 @@ export async function createTopic(
     } else {
       return {
         errors: {
-          _form: ['Something went wrong']
+          _form: ['Failed to create topic']
         }
       }
     }
